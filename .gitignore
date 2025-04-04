@@ -1,0 +1,4 @@
+milestone_1/backend/python/.venv/*
+milestone_1/infra/.venv/*
+milestone_1/infra/cdk.out/*
+**/__pycache__/*

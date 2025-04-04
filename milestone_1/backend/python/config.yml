@@ -1,0 +1,13 @@
+cognito:
+  region: us-east-1
+  user_pool:
+    id: us-east-1_bTdbXjyjf      
+
+frontend:
+  url: http://localhost:5173
+  
+parameter:
+  arn:
+    parameter_store: arn:aws:ssm:us-east-1:960674118045:parameter/message/ms-1
+    secret_store: arn:aws:secretsmanager:us-east-1:960674118045:secret:secret_message-jqFF9V
+    

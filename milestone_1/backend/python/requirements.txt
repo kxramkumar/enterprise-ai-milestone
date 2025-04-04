@@ -1,0 +1,6 @@
+fastapi[standard]
+pyyaml==6.0.2
+types-PyYAML==6.0.2
+requests==2.32.3
+cognitojwt==1.4.1
+boto3==1.37.27
