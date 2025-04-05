@@ -8,7 +8,9 @@ ADD . /project/backend
 RUN pip install -r /project/backend/requirements.txt
 
 ENV APP_CONFIG_PATH=/project/backend/config.yml
-
+ENV AWS_ACCESS_KEY_ID=<access_key_id>
+ENV AWS_SECRET_ACCESS_KEY=<secret_access_key>
+ENV AWS_REGION=us-east-1
 
 CMD ["fastapi", "dev", "--host", "0.0.0.0", "/project/backend/src/service.py"]
 
