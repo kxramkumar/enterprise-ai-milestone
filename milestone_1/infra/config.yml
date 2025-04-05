@@ -3,8 +3,8 @@ region: us-east-1
 # Updated after ParameterStack
 parameter:
   arn:
-    parameter_store: xxxxxxxxxxxxxxxx
-    secret_store: xxxxxxxxxxxxxxxx
+    parameter_store: arn:aws:ssm:us-east-1:960674118045:parameter/message/ms-1
+    secret_store: arn:aws:secretsmanager:us-east-1:960674118045:secret:secret_message-jqFF9V
 
 # Used by CognitoStack
 cognito:
@@ -16,12 +16,12 @@ cognito:
     region: us-east-1
   app_client:    
     name: ms1-client
-
+    
 # Used by BackendStack
 backend:
   service:
     name: ms1-backend
-    url: xxxxxxxxxxxxxxxx
+  url: http://localhost:8000
 
 # Used by FrontendStack   
 frontend:
@@ -29,9 +29,9 @@ frontend:
     name: ms1-bucket-5999
   cognito:
     user_pool:
-      id: xxxxxxxxxxxxxxxx     
-      region: xxxxxxxxxxxxxxxx
+      id: us-east-1_XmJegtPm4     
+      region: us-east-1
     app_client:
-      id: xxxxxxxxxxxxxxxx
-  url: xxxxxxxxxxxxxxxx
+      id: 4cm86jnf64085ki8mfuin9le7g
+  url: http://localhost:5173
 

@@ -28,7 +28,7 @@ class CognitoStack(Stack):
         function_name = Config.get("cognito.function.restrict_domain.name")
         function_path = Path(os.getcwd()).parent.joinpath("function/restrict_domain")
 
-        print(function_path)
+        # print(function_path)
         domain_restrict_lambda = lambda_python.PythonFunction(
             self,
             function_name,

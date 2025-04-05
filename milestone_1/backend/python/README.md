@@ -50,7 +50,7 @@ ENV AWS_SECRET_ACCESS_KEY=<secret_key>
 ENV AWS_REGION=<region>
 
 docker build -f Dockerfile.local -t ms1-backend-local .
-docker run --rm -p 8001:8000 ms1-backend-local
+docker run --rm -p 8000:8000 ms1-backend-local
 ```
 
 ### Run in AppRunner

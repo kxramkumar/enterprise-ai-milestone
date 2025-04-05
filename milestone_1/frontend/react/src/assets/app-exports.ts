@@ -1,3 +1,3 @@
 export const appConfig = {
-    backend_url : "xxxxxxxxxxxxxxxx"
+    backend_url : "http://localhost:8000"
 };

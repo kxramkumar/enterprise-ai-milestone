@@ -180,8 +180,8 @@ class BackendStack(Stack):
         target_docker_image: str,
     ):
         frontend_url = Config.get("frontend.url")
+        secret_store_arn = Config.get("parameter.arn.secret_store")
         parameter_store_arn = Config.get("parameter.arn.parameter_store")
-        secret_manager_arn = Config.get("parameter.arn.secret_manager")
         service = apprunner.CfnService(
             self,
             "backend-service",
@@ -198,6 +198,12 @@ class BackendStack(Stack):
                     image_repository_type="ECR",
                     image_configuration=apprunner.CfnService.ImageConfigurationProperty(
                         port="8000",
+                        runtime_environment_variables=[
+                            apprunner.CfnService.KeyValuePairProperty(
+                                name="FRONTEND_URL",
+                                value=frontend_url,
+                            )
+                        ],
                         runtime_environment_secrets=[
                             apprunner.CfnService.KeyValuePairProperty(
                                 name="PARAMETER_ARN_PARAMETER_STORE",
@@ -205,11 +211,7 @@ class BackendStack(Stack):
                             ),
                             apprunner.CfnService.KeyValuePairProperty(
                                 name="PARAMETER_ARN_SECRET_STORE",
-                                value=secret_manager_arn,
-                            ),
-                            apprunner.CfnService.KeyValuePairProperty(
-                                name="FRONTEND_URL",
-                                value=frontend_url,
+                                value=secret_store_arn,
                             ),
                         ],
                     ),

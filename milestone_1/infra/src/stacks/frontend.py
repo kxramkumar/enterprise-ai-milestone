@@ -25,7 +25,7 @@ class FrontendStack(Stack):
         user_pool_id = Config.get("frontend.cognito.user_pool.id")
         user_pool_region = Config.get("frontend.cognito.user_pool.region")
         app_client_id = Config.get("frontend.cognito.app_client.id")
-        backend_url = Config.get("backend.service.url")
+        backend_url = Config.get("backend.url")
 
         react_path = Path(os.getcwd()).parent.joinpath("frontend/react")
         data: dict[str, str] = {

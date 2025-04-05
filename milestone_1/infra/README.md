@@ -76,14 +76,14 @@ Third stack is to run, BackendStack; which need service name and previous set pa
 cdk deploy CognitoStack
 ```
 > **After Execution** <br>
-> backend.service.url
+> backend.url
 
 ### Step-4
-Fourth stack is to run, FrontendStack; which need service name and cognito informations before and returns url after execution. \
+Fourth stack is to run, FrontendStack; which need backend url and cognito informations before and returns url after execution. \
 *~ already updated in previous stack*
 
 > **Before Execution** <br>
-> backend.service.name <br>
+> backend.url <br>
 > ~ frontend.cognito.user_pool.id <br>
 > ~ frontend.cognito.user_pool.region <br>
 > ~ frontend.cognito.app_client.id

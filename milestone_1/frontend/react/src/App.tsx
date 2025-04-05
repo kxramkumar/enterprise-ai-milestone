@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 
 import { fetchAuthSession } from "aws-amplify/auth";
@@ -16,6 +16,7 @@ async function getAuthToken(): Promise<string | undefined> {
 }
 
 function App() {
+  const [data, setData] = useState(null);
   useEffect(() => {
     console.log("mounted");
     getAuthToken()
@@ -34,7 +35,7 @@ function App() {
         });
       })
       .then((response) => response?.json())
-      .then((data) => console.log("API Data:", data))
+      .then((data) => setData(data))
       .catch((error) => console.error("Error:", error));
   }, []);
 
@@ -44,7 +45,8 @@ function App() {
 
   return (
     <>
-      <h1>Kapil Disciples Frontend</h1>
+      <h2>{data}</h2>
+      <h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;by Kapil Disciples </h3>
       <div className="card">
         <button onClick={handleSignOut}>SignOut</button>
       </div>
