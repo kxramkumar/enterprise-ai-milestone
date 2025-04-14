@@ -73,7 +73,7 @@ Third stack is to run, BackendStack; which need service name and previous set pa
 > ~ parameter.arn.parameter_store 
 
 ```
-cdk deploy CognitoStack
+cdk deploy BackendStack
 ```
 > **After Execution** <br>
 > backend.url
@@ -88,7 +88,7 @@ Fourth stack is to run, FrontendStack; which need backend url and cognito inform
 > ~ frontend.cognito.user_pool.region <br>
 > ~ frontend.cognito.app_client.id
 ```
-cdk deploy CognitoStack
+cdk deploy FrontendStack
 ```
 > **After Execution** <br>
 > frontend.url
@@ -100,7 +100,7 @@ Fifth stack is to re-run, BackendStack; which need frontend url before and retur
 > **Before Execution** <br>
 > ~ frontend.url
 ```
-cdk deploy CognitoStack
+cdk deploy BackendStack
 ```
 > **After Execution** <br>
 > NA
