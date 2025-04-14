@@ -1,19 +1,13 @@
 import os
-import pystache
-import subprocess
 from pathlib import Path
-from utils.helper import Config
 from constructs import Construct
-from aws_cdk import aws_s3 as s3
 from aws_cdk import aws_iam as iam
-from aws_cdk import aws_cloudfront as cf
 from aws_cdk import aws_lambda as _lambda
 from aws_cdk import aws_cognito as cognito
-
-from aws_cdk import aws_cloudfront_origins as origins
-from aws_cdk import aws_s3_deployment as s3_deployment
 from aws_cdk import Fn, Stack, RemovalPolicy, CfnOutput
 from aws_cdk import aws_lambda_python_alpha as lambda_python
+
+from utils.helper import Config
 
 
 class CognitoStack(Stack):

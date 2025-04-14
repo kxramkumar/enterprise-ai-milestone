@@ -1,6 +1,5 @@
 import os
 from pathlib import Path
-from utils.helper import Config
 from constructs import Construct
 from aws_cdk import aws_ecr as ecr
 from aws_cdk import aws_iam as iam
@@ -9,6 +8,8 @@ from aws_cdk import Stack, CfnOutput
 from aws_cdk import aws_apprunner as apprunner
 from aws_cdk import aws_ecr_assets as ecr_assets
 from aws_cdk import RemovalPolicy, Aws
+
+from utils.helper import Config
 
 
 class BackendStack(Stack):
@@ -161,7 +162,11 @@ class BackendStack(Stack):
                         ),
                         iam.PolicyStatement(
                             effect=iam.Effect.ALLOW,
-                            actions=["ssm:GetParameters"],
+                            actions=[
+                                "ssm:GetParameter",
+                                "ssm:GetParameters",
+                                "ssm:GetParametersByPath",
+                            ],
                             resources=[
                                 f"arn:aws:ssm:{Aws.REGION}:{Aws.ACCOUNT_ID}:parameter/*"
                             ],

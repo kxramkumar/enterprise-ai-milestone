@@ -17,6 +17,7 @@ cognito:
   app_client:    
     name: ms1-client
     
+    
 # Used by BackendStack
 backend:
   service:

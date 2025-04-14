@@ -3,7 +3,7 @@
 
 ### Working directory
 ```
-~/milestore_1/infra
+~/milestone_1/infra
 ```
 ### Prerequisite setup infra
 
