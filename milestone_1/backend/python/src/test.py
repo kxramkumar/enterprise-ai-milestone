@@ -31,9 +31,9 @@ def get_parameter_by_arn(parameter_arn, region_name="us-east-1", with_decryption
         return None
 
 
-backend_arn_parameter_store = Config.get("backend.arn.parameter_store")
-backend_arn_secret_manager = Config.get("backend.arn.secret_manager")
+backend_arn_parameter_store = Config.get("parameter.arn.parameter_store")
+backend_arn_secret_store = Config.get("parameter.arn.secret_store")
 print(backend_arn_parameter_store)
-print(backend_arn_secret_manager)
+print(backend_arn_secret_store)
 print(get_parameter_by_arn(backend_arn_parameter_store))
-print(get_secret_by_arn(backend_arn_secret_manager)["message"])
+print(get_secret_by_arn(backend_arn_secret_store)["message"])

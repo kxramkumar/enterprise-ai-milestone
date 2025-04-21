@@ -49,8 +49,16 @@ def get_parameter_by_arn(parameter_arn, region_name="us-east-1", with_decryption
         return None
 
 
-parameter_store_message = get_parameter_by_arn(parameter_arn_parameter_store)
-secret_store_message = get_secret_by_arn(parameter_arn_secret_store)["message"]
+def loadProperties():
+    try:
+        global secret_store_message
+        global parameter_store_message
+        parameter_store_message = get_parameter_by_arn(parameter_arn_parameter_store)
+        secret_store_message = get_secret_by_arn(parameter_arn_secret_store)["message"]
+        print(f"parameter_store_message - {parameter_store_message}")
+        print(f"secret_store_message - {secret_store_message}")
+    except Exception as e:
+        print(f"Error fetching parameter: {e}")
 
 
 # unprotected endpoint
@@ -70,10 +78,7 @@ async def health():
 
 @app.get("/refresh")
 async def refresh():
-    global secret_store_message
-    global parameter_store_message
-    parameter_store_message = get_parameter_by_arn(parameter_arn_parameter_store)
-    secret_store_message = get_secret_by_arn(parameter_arn_secret_store)["message"]
+    loadProperties()
 
     return {
         "status": "Successful! Refreshed parameter and secret messages",
@@ -105,3 +110,6 @@ async def protected(request: Request):
     print("Extracted claims")
     print(verified_claims)
     return secret_store_message
+
+
+loadProperties()

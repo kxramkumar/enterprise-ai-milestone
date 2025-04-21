@@ -1,5 +1,6 @@
 import os
 from pathlib import Path
+import time
 from constructs import Construct
 from aws_cdk import aws_ecr as ecr
 from aws_cdk import aws_iam as iam
@@ -165,7 +166,6 @@ class BackendStack(Stack):
                             actions=[
                                 "ssm:GetParameter",
                                 "ssm:GetParameters",
-                                "ssm:GetParametersByPath",
                             ],
                             resources=[
                                 f"arn:aws:ssm:{Aws.REGION}:{Aws.ACCOUNT_ID}:parameter/*"
@@ -207,9 +207,7 @@ class BackendStack(Stack):
                             apprunner.CfnService.KeyValuePairProperty(
                                 name="FRONTEND_URL",
                                 value=frontend_url,
-                            )
-                        ],
-                        runtime_environment_secrets=[
+                            ),
                             apprunner.CfnService.KeyValuePairProperty(
                                 name="PARAMETER_ARN_PARAMETER_STORE",
                                 value=parameter_store_arn,
@@ -218,7 +216,24 @@ class BackendStack(Stack):
                                 name="PARAMETER_ARN_SECRET_STORE",
                                 value=secret_store_arn,
                             ),
+                            # Below is a hack to redeploy apprunner. where adding Dummy variable to
+                            # trigger redeploy
+                            # NOTE: Correct way is to create Unique tag (v1, v2) for
+                            apprunner.CfnService.KeyValuePairProperty(
+                                name="FORCE_DEPLOY_TOKEN",  # Dummy var to trigger redeploy
+                                value=str(int(time.time())),  # Changes on every deploy
+                            ),
                         ],
+                        # runtime_environment_secrets=[
+                        #     apprunner.CfnService.KeyValuePairProperty(
+                        #         name="PARAMETER_ARN_PARAMETER_STORE",
+                        #         value=parameter_store_arn,
+                        #     ),
+                        #     apprunner.CfnService.KeyValuePairProperty(
+                        #         name="PARAMETER_ARN_SECRET_STORE",
+                        #         value=secret_store_arn,
+                        #     ),
+                        # ],
                     ),
                 ),
                 auto_deployments_enabled=True,
