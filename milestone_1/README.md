@@ -21,9 +21,9 @@
 ```
 Kindly follow below README.md for respective projects,
 
-[Backend application README](./milestone_1/backend/python/README.md); To run backend Local[^1], Local[^1] Docker or in AppRunner[^2]. \
-[Frontend application README](./milestone_1/frontend/react/README.md); To run frontend Local[^1] and S3 deployment[^3] \
-[Infrastructure README](./milestone_1/infra/README.md); To run CDK stacks, ParameterStack, CognitoStack, BackendStack, FrontendStack
+[Backend application README](./backend/python/README.md); To run backend Local[^1], Local[^1] Docker or in AppRunner[^2]. \
+[Frontend application README](./frontend/react/README.md); To run frontend Local[^1] and S3 deployment[^3] \
+[Infrastructure README](./infra/README.md); To run CDK stacks, ParameterStack, CognitoStack, BackendStack, FrontendStack
 
 > Note: \
 > [^1] Local -> inside DevContainer \
